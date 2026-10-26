@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "author": "Francesco Boito Diaz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 150,
+      "left": 40,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -50,
+      "left": -80,
+      "attrs": {
+        "label": "Zona 1"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir2",
+      "top": -50,
+      "left": 230,
+      "attrs": {
+        "label": "Zona 2"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "pir1:VCC",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "pir1:GND",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "pir1:OUT",
+      "uno:2",
+      "green",
+      []
+    ],
+    [
+      "pir2:VCC",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "pir2:GND",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "pir2:OUT",
+      "uno:3",
+      "blue",
+      []
+    ]
+  ],
+  "dependencies": {},
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf"
+  }
+}

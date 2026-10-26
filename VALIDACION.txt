@@ -1,0 +1,24 @@
+Validacion realizada en el entorno de preparacion
+
+Compilacion C++11 del sketch con una interfaz Arduino simulada (mock),
+-Wall -Wextra -Werror y sanitizadores AddressSanitizer/UndefinedBehaviorSanitizer.
+No equivale a compilar para AVR ni a ejecutar Wokwi.
+
+Casos comprobados mediante aserciones:
+- Rechazo de fecha no bisiesta, mes invalido, hora invalida y texto adicional.
+- Aceptacion de 29/02/2028 y paso al 01/03/2028.
+- Captura de zonas 1 y 2 y conservacion de su orden.
+- Marca temporal original aunque loop procese mas tarde.
+- Lista vacia y punteros NULL tras informar y liberar.
+- Informe de cero eventos.
+- Desbordamiento de millis: avance correcto de 48 ms.
+- Cola con 20 capturas sin consumir: 15 conservadas y 5 perdidas informadas.
+- Vaciado posterior y reinicio de los contadores.
+
+LeakSanitizer no funciona bajo la instrumentacion del entorno (ptrace).
+La ejecucion se hizo con detect_leaks=0; AddressSanitizer y UBSan permanecieron
+activos. Se comprobo explicitamente que la lista queda vacia tras liberarla.
+No se simulo el fallo de malloc ni se ejecuto la interfaz grafica de Wokwi.
+
+La comprobacion final de circuito, compilacion AVR y sensores se debe realizar
+con los pasos y casos manuales de LEEME.md.
